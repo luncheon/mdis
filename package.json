@@ -1,0 +1,13 @@
+{
+  "name": "mdis",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "key": "openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem",
+    "start": "http-server --ssl --port 8443"
+  },
+  "license": "WTFPL",
+  "devDependencies": {
+    "http-server": "^0.12.3"
+  }
+}
