@@ -2,6 +2,8 @@
 <html>
   <head>
     <meta charset="utf8">
+    <meta name="viewport" content="width=device-width">
+    <title>Material Design Icons Search</title>
     <style>
       * {
         margin: 0;
@@ -43,7 +45,7 @@
   </head>
   <body>
     <main>
-      <div style="display: flex; align-items: flex-end; margin-bottom: 1em;">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; margin-bottom: 1em;">
         <input autofocus style="flex: auto; margin-right: 1em;">
         <a target="_blank" rel="noopener noreferrer nofollow" href="https://materialdesignicons.com/">https://materialdesignicons.com/</a>
       </div>
@@ -51,6 +53,16 @@
     </main>
     <script type="module">
       import * as mdi from 'https://cdn.jsdelivr.net/npm/@mdi/js/mdi.js'
+
+      // favicon
+      {
+        const color = matchMedia('(prefers-color-scheme:dark)').matches ? '#fff' : '#333'
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="${color}"><path d="${mdi.mdiMaterialDesign}"/></svg>`
+        console.log(svg)
+        const link = document.head.appendChild(document.createElement('link'))
+        link.rel = 'icon'
+        link.href = `data:image/svg+xml,${encodeURIComponent(svg)}`
+      }
 
       const ul = document.getElementsByTagName('ul')[0]
       const icons = []
