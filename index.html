@@ -4,6 +4,7 @@
     <meta charset="utf8">
     <meta name="viewport" content="width=device-width">
     <title>Material Design Icons Search</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2.6.0/hint.min.css">
     <style>
       * {
         margin: 0;
@@ -41,6 +42,11 @@
         vertical-align: middle;
         fill: currentColor;
       }
+      [class*=hint--]:after {
+        font-size: 1rem;
+        padding: 8px 16px;
+        border-radius: 2px;
+      }
     </style>
   </head>
   <body>
@@ -71,7 +77,8 @@
         const li = ul.appendChild(document.createElement('li'))
         const svg = li.appendChild(document.createElementNS('http://www.w3.org/2000/svg', 'svg'))
         const path = svg.appendChild(document.createElementNS('http://www.w3.org/2000/svg', 'path'))
-        li.title = name
+        li.setAttribute('aria-label', name)
+        li.className = 'hint--top'
         svg.setAttribute('viewBox', '0 0 24 24')
         path.setAttribute('d', d)
         icons.push([name.toLowerCase(), li])
@@ -79,7 +86,7 @@
 
       ul.addEventListener('click', event => {
         const li = event.target.closest('li')
-        li && prompt('', li.title)
+        li && prompt('', li.getAttribute('aria-label'))
       })
 
       document.getElementsByTagName('input')[0].addEventListener('input', event => {
